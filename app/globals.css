@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fff7f8;
+  --foreground: #1a1a1a;
+  --cream: #fff7f8;
+  --ink: #1a1a1a;
+  --muted: #6d6668;
+  --sage: #c2183a;
+  --terra: #ef2b3c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: #fff7f8;
+  --color-cream-deep: #ffe4ea;
+  --color-ink: #1a1a1a;
+  --color-muted: #6d6668;
+  --color-sage: #c2183a;
+  --color-sage-soft: #ffe4ea;
+  --color-terra: #ef2b3c;
+  --color-terra-deep: #d01228;
+  --color-card: #ffffff;
+  --color-forest: #3a1220;
+  --color-shell: #ff6f8d;
+  --font-sans: var(--font-nunito-gf), "Nunito", sans-serif;
+  --font-serif: var(--font-cormorant-gf), "Cormorant Garamond", serif;
+  --font-script: var(--font-great-vibes-gf), "Great Vibes", cursive;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  background: #ff6f8d;
+  color: var(--ink);
+  font-family: var(--font-nunito-gf), "Nunito", sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: #ffd0da;
+  color: #1a1a1a;
+}
+
+.field {
+  width: 100%;
+  border-radius: 0.95rem;
+  border: 1px solid #f0d5dc;
+  background: #ffffff;
+  padding: 0.8rem 0.95rem;
+  color: #1a1a1a;
+  outline: none;
+}
+
+.field:focus {
+  border-color: #ef2b3c;
+  box-shadow: 0 0 0 3px rgba(239, 43, 60, 0.18);
+}
+
+.script-title {
+  font-family: var(--font-great-vibes-gf), "Great Vibes", cursive;
+  font-weight: 400;
+  line-height: 1.05;
+  color: #ef2b3c;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+button.bg-terra,
+a.bg-terra,
+span.bg-terra {
+  color: #fff;
+}
+
+.money-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.money-row > :first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.money-row > :last-child {
+  max-width: 58%;
+  flex-shrink: 0;
+  text-align: right;
+}
