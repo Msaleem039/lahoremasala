@@ -14,6 +14,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <OrderingBanner />
           {children}
           <Footer />
+          
         </div>
       </div>
     </div>
