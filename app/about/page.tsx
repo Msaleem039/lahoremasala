@@ -20,8 +20,8 @@ export default function AboutPage() {
             <h1 className="script-title mt-2 text-4xl sm:text-6xl lg:text-7xl">{t("Cooked slowly, served hot.", "Mijoté doucement, servi chaud.")}</h1>
             <p className="text-muted mt-4 leading-relaxed">
               {t(
-                "Masala Hub cooks the dishes on our card: butter chicken and the other specialties with basmati rice, chicken and vegetable biryani, stuffed naan, house-sauce pizzas, samosas, and lassi.",
-                "Masala Hub prépare les plats de la carte : poulet au beurre et les autres spécialités avec riz basmati, biryani poulet et végétarien, naan garni, pizzas à la sauce maison, samosas et lassi.",
+                "Taste of Lahore Masala cooks the dishes on our card: butter chicken and the other specialties with basmati rice, chicken and vegetable biryani, stuffed naan, house-sauce pizzas, samosas, and lassi.",
+                "Taste of Lahore Masala prépare les plats de la carte : poulet au beurre et les autres spécialités avec riz basmati, biryani poulet et végétarien, naan garni, pizzas à la sauce maison, samosas et lassi.",
               )}
             </p>
             <div className="mt-8 grid grid-cols-3 gap-2 border-t border-[#e5dcc8] pt-6 text-center sm:gap-4 sm:text-left">
@@ -33,7 +33,7 @@ export default function AboutPage() {
           <div className="relative h-80 sm:h-[420px] rounded-[2rem] overflow-hidden border-4 border-white shadow-xl">
             <Image
               src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1400&q=80"
-              alt={t("Chicken biryani from the Masala Hub kitchen", "Biryani poulet de la cuisine Masala Hub")}
+              alt={t("Chicken biryani from the Taste of Lahore Masala kitchen", "Biryani poulet de la cuisine Taste of Lahore Masala")}
               fill
               unoptimized
               className="object-cover"

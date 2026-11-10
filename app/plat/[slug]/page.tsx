@@ -62,9 +62,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const loaded = await loadProduct(decodeURIComponent(slug));
   const product = loaded?.product;
-  if (!product) return { title: "Plat · Masala Hub" };
+  if (!product) return { title: "Plat · Taste of Lahore Masala" };
   return {
-    title: `${dishName(product.name, "fr")} · Masala Hub`,
+    title: `${dishName(product.name, "fr")} · Taste of Lahore Masala`,
     description: dishDescription(product.description, "fr"),
     alternates: { canonical: `/plat/${product.slug}` },
     openGraph: {

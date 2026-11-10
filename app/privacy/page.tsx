@@ -11,8 +11,8 @@ export default function PrivacyPage() {
         <h1 className="script-title text-5xl sm:text-7xl">{t("Privacy", "Confidentialité")}</h1>
         <div className="mt-6 space-y-4 text-muted leading-relaxed">
           <p>{t(
-            "Masala Hub keeps your basket, saved dishes, profile, and orders in this browser. We use that information to refill checkout and to show order tracking on this device.",
-            "Masala Hub conserve votre panier, vos plats enregistrés, votre profil et vos commandes dans ce navigateur. Ces informations servent à préremplir la commande et à suivre une commande sur cet appareil.",
+            "Taste of Lahore Masala keeps your basket, saved dishes, profile, and orders in this browser. We use that information to refill checkout and to show order tracking on this device.",
+            "Taste of Lahore Masala conserve votre panier, vos plats enregistrés, votre profil et vos commandes dans ce navigateur. Ces informations servent à préremplir la commande et à suivre une commande sur cet appareil.",
           )}</p>
           <p>{t(
             "Online payment asks for a card so the order can be marked paid. Only the last four digits are saved with the order. The full card number and CVV are not written to storage.",
