@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductView } from "../../components/ProductView";
 import { DISHES, dishDescription, dishName, dishSlug, type Dish } from "../../data/menuData";
-import { API_BASE } from "../../lib/clientApi";
 import type { MenuProduct } from "../../lib/types";
 
 export const dynamic = "force-dynamic";
@@ -34,27 +33,6 @@ function fromList(products: Dish[], slug: string) {
 }
 
 async function loadProduct(slug: string) {
-  try {
-    const response = await fetch(`${API_BASE}/api/food/item/${encodeURIComponent(slug)}`, { cache: "no-store" });
-    if (response.ok) {
-      const data = (await response.json()) as { product?: Dish; related?: Dish[] };
-      if (data.product) return { product: asProduct(data.product), related: (data.related ?? []).map(asProduct) };
-    }
-  } catch {
-    // The item route can be down while the menu cards are still shown from the local list.
-  }
-
-  try {
-    const response = await fetch(`${API_BASE}/api/food/list`, { cache: "no-store" });
-    if (response.ok) {
-      const data = (await response.json()) as { products?: Dish[] };
-      const found = fromList(data.products ?? [], slug);
-      if (found) return found;
-    }
-  } catch {
-    // Fall through to the printed menu.
-  }
-
   return fromList(DISHES, slug);
 }
 

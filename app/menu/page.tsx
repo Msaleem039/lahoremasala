@@ -3,6 +3,7 @@
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Search, UtensilsCrossed } from "lucide-react";
+import { LinedHeading } from "../components/LinedHeading";
 import { SiteShell } from "../components/SiteShell";
 import { DishCard } from "../components/DishCard";
 import { CATEGORIES, categoryLabel, dishDescription, dishName, type MenuCategory } from "../data/menuData";
@@ -52,11 +53,11 @@ function MenuContent() {
     <SiteShell>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         <div className="mb-8 text-center">
-          <h1 className="font-serif text-5xl font-semibold italic leading-none text-ink sm:text-7xl">
+          <LinedHeading as="h1" className="font-serif text-5xl font-semibold italic leading-none text-ink sm:text-7xl">
             {t("The", "La")}{" "}
             <span className="font-script text-[1.15em] font-normal not-italic text-terra">{t("Menu", "carte")}</span>
-          </h1>
-          <p className="mt-3 text-muted">{t("Specialties with basmati rice. Pizzas with sauce faite maison.", "Spécialités avec riz basmati. Pizzas à la sauce faite maison.")}</p>
+          </LinedHeading>
+          <p className="mt-3 text-muted">{t("Special menus, chicken dishes, biryani, vegetarian dishes and starters.", "Formules spéciales, plats poulet, biryani, plats végétariens et entrées.")}</p>
         </div>
 
         <div className="max-w-md mx-auto mb-6 relative">
@@ -64,7 +65,7 @@ function MenuContent() {
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={t("Search butter chicken, naan, lassi...", "Rechercher butter chicken, naan, lassi...")}
+            placeholder={t("Search butter chicken, biryani, samosa...", "Rechercher butter chicken, biryani, samosa...")}
             className="field pl-11"
           />
         </div>
@@ -76,7 +77,7 @@ function MenuContent() {
               type="button"
               onClick={() => setSelectedCat(category.slug)}
               className={`rounded-full px-4 py-2 text-sm font-bold ${
-                selectedCat === category.slug ? "bg-terra text-white" : "border border-[#f0d5dc] bg-white text-ink"
+                selectedCat === category.slug ? "bg-terra text-ink" : "border border-[#f4d4bc] bg-white text-ink"
               }`}
             >
               {categoryLabel(category.slug, lang)}
@@ -85,7 +86,7 @@ function MenuContent() {
         </div>
 
         {filtered.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-[#f0d5dc] bg-[#fff7f8] py-16 text-center">
+          <div className="rounded-3xl border border-dashed border-[#f4d4bc] bg-[#fff3e8] py-16 text-center">
             <UtensilsCrossed className="w-10 h-10 mx-auto text-sage mb-3" />
             <p className="font-semibold">{t("No dishes match that search.", "Aucun plat ne correspond à cette recherche.")}</p>
           </div>
@@ -96,10 +97,12 @@ function MenuContent() {
               if (dishes.length === 0) return null;
               return (
                 <section key={category.slug}>
-                  <h2 className="script-title mb-5 text-4xl sm:text-5xl">{categoryLabel(category.slug, lang)}</h2>
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <LinedHeading className="script-title mb-5 text-4xl sm:text-5xl">{categoryLabel(category.slug, lang)}</LinedHeading>
+                  <div className="flex flex-wrap justify-center gap-4">
                     {dishes.map((dish) => (
-                      <DishCard key={dish.id} dish={dish} />
+                      <div key={dish.id} className="w-[260px] sm:w-[280px]">
+                        <DishCard dish={dish} />
+                      </div>
                     ))}
                   </div>
                 </section>
@@ -109,11 +112,13 @@ function MenuContent() {
         ) : (
           <div>
             {selectedCat !== "all" && (
-              <h2 className="script-title mb-5 text-4xl sm:text-5xl">{categoryLabel(selectedCat as MenuCategory, lang)}</h2>
+              <LinedHeading className="script-title mb-5 text-4xl sm:text-5xl">{categoryLabel(selectedCat as MenuCategory, lang)}</LinedHeading>
             )}
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="flex flex-wrap justify-center gap-4">
               {filtered.map((dish) => (
-                <DishCard key={dish.id} dish={dish} />
+                <div key={dish.id} className="w-[260px] sm:w-[280px]">
+                  <DishCard dish={dish} />
+                </div>
               ))}
             </div>
           </div>

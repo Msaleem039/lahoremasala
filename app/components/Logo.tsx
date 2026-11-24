@@ -16,7 +16,7 @@ export function Logo({
 
   return (
     <span className="inline-flex items-center gap-2 leading-none" role="img" aria-label="Taste of Lahore Masala">
-      <span className={`flex ${icon} shrink-0 items-center justify-center rounded-full bg-terra text-white`}>
+      <span className={`flex ${icon} shrink-0 items-center justify-center rounded-full bg-terra text-ink`}>
         <UtensilsCrossed className={size === "lg" ? "h-6 w-6" : "h-3.5 w-3.5 sm:h-4 sm:w-4"} />
       </span>
       <span className="min-w-0">

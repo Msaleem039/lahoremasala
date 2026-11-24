@@ -3,24 +3,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DishCard } from "./components/DishCard";
+import { LinedHeading } from "./components/LinedHeading";
 import { DishImage } from "./components/DishImage";
 import { Hero } from "./components/Hero";
 import { SiteShell } from "./components/SiteShell";
-import { categoryLabel, dishName, dishPath, type Dish } from "./data/menuData";
+import { categoryLabel, dishName, type Dish } from "./data/menuData";
 import { useCatalog } from "./context/CatalogContext";
 import { useLanguage } from "./context/LanguageContext";
 import { apiFetch } from "./lib/clientApi";
 import type { PublicReview } from "./lib/types";
 
-const POPULAR_IDS = ["sp-1", "by-1", "pz-2", "na-3", "en-1", "sp-3", "bo-1", "na-1"];
+const POPULAR_IDS = ["fo-1", "sp-1", "pk-2", "by-1", "vg-1", "en-1", "pk-7", "vg-3"];
 const COURSE_IDS = [
-  { slug: "specialites", id: "sp-1" },
-  { slug: "biryanis", id: "by-1" },
-  { slug: "naans", id: "na-3" },
-  { slug: "pizzas", id: "pz-1" },
-  { slug: "entrees", id: "en-1" },
   { slug: "formules", id: "fo-1" },
-  { slug: "boissons", id: "bo-1" },
+  { slug: "poulet", id: "sp-1" },
+  { slug: "biryanis", id: "by-1" },
+  { slug: "vegetariens", id: "vg-1" },
+  { slug: "entrees", id: "en-1" },
 ];
 
 function pick(dishes: Dish[], ids: string[]) {
@@ -56,12 +56,12 @@ export default function Home() {
       <Hero />
 
       <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-10">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <h2 className="font-serif text-4xl font-semibold italic leading-none text-ink sm:text-5xl">
+        <div className="relative mb-8">
+          <LinedHeading className="font-serif text-4xl font-semibold italic leading-none text-ink sm:text-5xl">
             {t("Our Popular", "Nos plats")}{" "}
             <span className="font-script text-[1.25em] font-normal not-italic text-terra">{t("Dishes", "favoris")}</span>
-          </h2>
-          <div className="flex shrink-0 gap-2">
+          </LinedHeading>
+          <div className="mt-4 flex justify-center gap-2 sm:absolute sm:right-0 sm:top-1/2 sm:mt-0 sm:-translate-y-1/2">
             <button
               type="button"
               aria-label={t("Previous dishes", "Plats précédents")}
@@ -74,33 +74,26 @@ export default function Home() {
               type="button"
               aria-label={t("Next dishes", "Plats suivants")}
               onClick={() => scroll(1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-terra text-white hover:bg-terra-deep"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-terra text-ink hover:bg-terra-deep"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
         </div>
-        <div ref={row} className="no-scrollbar flex snap-x gap-4 overflow-x-auto scroll-smooth pb-2">
+        <div ref={row} className="no-scrollbar flex snap-x gap-3 overflow-x-auto scroll-smooth pb-2">
           {shown.map((dish) => (
-            <Link
-              key={dish.id}
-              href={dishPath(dish)}
-              className="w-[200px] shrink-0 snap-start rounded-[1.6rem] bg-[#f6f4f5] px-4 py-6 text-center sm:w-[220px]"
-            >
-              <span className="relative mx-auto block h-36 w-36 overflow-hidden rounded-full bg-white">
-                <DishImage src={dish.image} alt={dishName(dish.name, lang)} sizes="144px" />
-              </span>
-              <span className="mt-4 block font-medium text-ink">{dishName(dish.name, lang)}</span>
-            </Link>
+            <div key={dish.id} className="w-[260px] shrink-0 snap-start sm:w-[280px]">
+              <DishCard dish={dish} />
+            </div>
           ))}
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-10">
-        <h2 className="mb-8 text-center font-serif text-4xl font-semibold italic text-ink">
+        <LinedHeading className="mb-8 font-serif text-4xl font-semibold italic text-ink">
           {t("Browse by", "Par")}{" "}
           <span className="font-script text-[1.2em] font-normal not-italic text-terra">{t("course", "catégorie")}</span>
-        </h2>
+        </LinedHeading>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {categories.map((category) => (
             <Link key={category.slug} href={`/menu/${category.slug}`} className="group rounded-[1.6rem] bg-[#f6f4f5] px-4 py-6 text-center">
@@ -114,10 +107,10 @@ export default function Home() {
       </section>
 
       <section className="mx-auto w-full max-w-7xl px-4 pb-16 sm:px-6 lg:px-10">
-        <h2 className="mb-8 text-center font-serif text-4xl font-semibold italic text-ink sm:text-5xl">
+        <LinedHeading className="mb-8 font-serif text-4xl font-semibold italic text-ink sm:text-5xl">
           {t("Verified", "Avis")}{" "}
           <span className="font-script text-[1.2em] font-normal not-italic text-terra">{t("reviews", "vérifiés")}</span>
-        </h2>
+        </LinedHeading>
         {reviews.length === 0 ? (
           <p className="text-center text-muted">{t("Approved reviews from completed orders will appear here.", "Les avis approuvés, issus de commandes terminées, apparaîtront ici.")}</p>
         ) : (

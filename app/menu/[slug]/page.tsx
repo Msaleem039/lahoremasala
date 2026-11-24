@@ -3,6 +3,7 @@
 import React, { use } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { LinedHeading } from "../../components/LinedHeading";
 import { SiteShell } from "../../components/SiteShell";
 import { DishCard } from "../../components/DishCard";
 import { categoryLabel } from "../../data/menuData";
@@ -22,19 +23,19 @@ export default function CategoryMenuPage({ params }: { params: Promise<{ slug: s
         <Link href="/menu" className="inline-flex items-center gap-2 text-terra font-semibold mb-6">
           <ArrowLeft className="w-4 h-4" /> {t("Full menu", "Menu complet")}
         </Link>
-        <h1 className="script-title mb-3 text-4xl sm:text-6xl lg:text-7xl">{title}</h1>
+        <LinedHeading as="h1" className="script-title mb-3 text-4xl sm:text-6xl lg:text-7xl">{title}</LinedHeading>
         <p className="text-muted mb-8">
-          {slug === "specialites"
-            ? t("Each specialty is served with basmati rice.", "Chaque spécialité est servie avec du riz basmati.")
-            : slug === "pizzas"
-              ? t("House-made sauce.", "Sauce faite maison.")
-              : t(`${dishes.length} dishes in this course.`, `${dishes.length} plats dans cette catégorie.`)}
+          {slug === "formules"
+            ? t("Menus for one or two people.", "Formules pour une ou deux personnes.")
+            : t(`${dishes.length} dishes in this course.`, `${dishes.length} plats dans cette catégorie.`)}
         </p>
 
         {dishes.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {dishes.map((dish) => (
-              <DishCard key={dish.id} dish={dish} />
+              <div key={dish.id} className="w-[260px] sm:w-[280px]">
+                <DishCard dish={dish} />
+              </div>
             ))}
           </div>
         ) : (

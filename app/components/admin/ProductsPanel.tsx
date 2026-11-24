@@ -32,7 +32,7 @@ type Draft = {
 const emptyDraft = (): Draft => ({
   id: "",
   name: "",
-  category: "specialites",
+  category: "poulet",
   price: "",
   description: "",
   image: "",

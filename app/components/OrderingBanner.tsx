@@ -15,7 +15,7 @@ export function OrderingBanner() {
       }).format(new Date(info.nextOpenAt))
     : "";
   return (
-    <p className="bg-[#ffe4ea] px-4 py-2 text-center text-sm font-semibold text-terra-deep">
+    <p className="border-y border-[#eee] bg-white px-4 py-2 text-center text-sm font-semibold text-ink">
       {info.allowScheduled
         ? t(
             `The kitchen is closed for immediate orders${when ? `. The next opening is ${when}` : ""}. You can schedule one at checkout.`,

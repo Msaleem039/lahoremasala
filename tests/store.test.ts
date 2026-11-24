@@ -24,7 +24,7 @@ function db() {
 test("orders ignore client prices and payment status", () => {
   const database = db();
   const quote = quoteCart(database, { lines: [{ productId: "sp-1", quantity: 1 }], service: "delivery" }, now);
-  assert.equal(quote.totalCents, 1580);
+  assert.equal(quote.totalCents, 1880);
   const placed = placeOrder(
     database,
     {
@@ -41,7 +41,7 @@ test("orders ignore client prices and payment status", () => {
   );
   assert.equal(placed.ok, true);
   if (!placed.ok) return;
-  assert.equal(placed.order.total, 15.8);
+  assert.equal(placed.order.total, 18.8);
   assert.equal(placed.order.paymentStatus, "unpaid");
   assert.equal(placed.order.status, "pending");
   const replay = placeOrder(

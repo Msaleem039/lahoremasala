@@ -31,9 +31,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
 
   const refresh = async () => {
     const data = await loadCatalog();
-    setDishes(data.products);
-    setExtras(data.extras);
-    setInfo(data.info);
+    setInfo(data.info ?? null);
   };
 
   useEffect(() => {
@@ -41,9 +39,7 @@ export function CatalogProvider({ children }: { children: React.ReactNode }) {
     loadCatalog()
       .then((data) => {
         if (cancelled) return;
-        setDishes(data.products);
-        setExtras(data.extras);
-        setInfo(data.info);
+        setInfo(data.info ?? null);
       })
       .catch(() => {})
       .finally(() => {

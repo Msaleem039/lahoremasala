@@ -9,6 +9,7 @@ import { WishlistProvider } from "./context/WishlistContext";
 
 const nunito = Nunito({
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
   variable: "--font-nunito-gf",
 });
 
@@ -26,8 +27,8 @@ const script = Great_Vibes({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "Taste of Lahore Masala — Biryani, currys et naans",
-  description: "Commandez poulet au beurre, biryani, naan et spécialités maison chez Taste of Lahore Masala.",
+  title: "Taste of Lahore Masala — Formules, currys et biryani",
+  description: "Commandez les formules, plats poulet, biryani, plats végétariens et entrées de Taste of Lahore Masala.",
   other: { google: "notranslate" },
 };
 

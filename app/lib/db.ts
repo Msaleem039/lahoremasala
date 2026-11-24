@@ -173,25 +173,14 @@ CREATE TABLE IF NOT EXISTS settings (
 `;
 
 const COMPLEMENTS: [string, string][] = [
-  ["specialites", "naans"],
-  ["specialites", "boissons"],
-  ["specialites", "entrees"],
-  ["biryanis", "naans"],
-  ["biryanis", "boissons"],
-  ["naans", "boissons"],
-  ["naans", "entrees"],
-  ["pizzas", "boissons"],
-  ["pizzas", "entrees"],
-  ["entrees", "boissons"],
+  ["poulet", "entrees"],
+  ["poulet", "vegetariens"],
+  ["biryanis", "entrees"],
+  ["vegetariens", "entrees"],
   ["formules", "entrees"],
-  ["boissons", "entrees"],
 ];
 
-const EXTRA_SEED: { id: string; name: string; price: number; categories: string[] }[] = [
-  { id: "ex-boisson", name: "Boisson 33 cl", price: 200, categories: ["specialites", "biryanis", "naans", "pizzas", "entrees"] },
-  { id: "ex-fromage", name: "Supplément fromage", price: 100, categories: ["naans", "pizzas"] },
-  { id: "ex-sauce", name: "Sauce", price: 50, categories: ["entrees", "naans", "pizzas"] },
-];
+const EXTRA_SEED: { id: string; name: string; price: number; categories: string[] }[] = [];
 
 function hashPassword(password: string) {
   const salt = randomBytes(16).toString("hex");

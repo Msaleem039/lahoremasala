@@ -17,14 +17,14 @@ export const Footer = () => {
   }, []);
 
   return (
-    <footer className="mt-8 border-t border-[#f6e4e8] bg-white text-ink">
+    <footer className="mt-8 border-t border-[#f4d4bc] bg-white text-ink">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div className="space-y-3">
           <Logo size="lg" />
           <p className="text-sm text-muted leading-relaxed">
             {t(
-              "Butter chicken, biryani, stuffed naan, and house lassi, prepared fresh and delivered to your door.",
-              "Poulet au beurre, biryani, naan garni et lassi maison, préparés frais et livrés chez vous."
+              "Special menus, chicken curries, biryani, vegetarian dishes, and starters, prepared fresh and delivered to your door.",
+              "Formules spéciales, currys de poulet, biryani, plats végétariens et entrées, préparés frais et livrés chez vous."
             )}
           </p>
         </div>
@@ -44,18 +44,18 @@ export const Footer = () => {
         <div>
           <h4 className="font-serif text-xl mb-3 text-ink">{t("The menu", "La carte")}</h4>
           <ul className="space-y-2 text-sm text-muted">
-            <li><Link href="/menu/specialites" className="hover:text-terra">Spécialités</Link></li>
-            <li><Link href="/menu/biryanis" className="hover:text-terra">Biryanis</Link></li>
-            <li><Link href="/menu/naans" className="hover:text-terra">Naans</Link></li>
-            <li><Link href="/menu/pizzas" className="hover:text-terra">Pizzas signature</Link></li>
-            <li><Link href="/menu/boissons" className="hover:text-terra">{t("Lassis & drinks", "Lassis et boissons")}</Link></li>
+            <li><Link href="/menu/formules" className="hover:text-terra">Formules spéciales</Link></li>
+            <li><Link href="/menu/poulet" className="hover:text-terra">Plats poulet</Link></li>
+            <li><Link href="/menu/biryanis" className="hover:text-terra">Biryani</Link></li>
+            <li><Link href="/menu/vegetariens" className="hover:text-terra">Plats végétariens</Link></li>
+            <li><Link href="/menu/entrees" className="hover:text-terra">Entrées</Link></li>
           </ul>
         </div>
 
         <div>
           <h4 className="font-serif text-xl mb-3 text-ink">{t("Kitchen", "Cuisine")}</h4>
           <ul className="space-y-3 text-sm text-muted">
-            <li className="flex gap-2"><MapPin className="w-4 h-4 text-terra shrink-0 mt-0.5" /> Main Boulevard, Gulberg III, Lahore</li>
+            <li className="flex gap-2"><MapPin className="w-4 h-4 text-terra shrink-0 mt-0.5" /> 5/3 Contour de l&apos;Église St Martin, 59100 Roubaix</li>
             <li className="flex gap-2"><Phone className="w-4 h-4 text-terra shrink-0" /> +92 42 111 228 325</li>
             <li className="flex gap-2"><Mail className="w-4 h-4 text-terra shrink-0" /> support@masalahub.com</li>
             <li className="flex gap-2"><Clock className="w-4 h-4 text-terra shrink-0" /> {info?.hoursShort ? `${info.openNow ? t("Open", "Ouvert") : t("Closed", "Fermé")} · ${info.hoursShort}` : t("Kitchen hours", "Horaires")}</li>
@@ -63,7 +63,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-[#f6e4e8]">
+      <div className="border-t border-[#f4d4bc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-xs text-muted">
           <p>© {year ?? "2026"} Taste of Lahore Masala. {t("All rights reserved.", "Tous droits réservés.")}</p>
           <div className="flex gap-5">

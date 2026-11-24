@@ -21,7 +21,7 @@ export default function ContactPage() {
             {[
               { icon: Phone, title: t("Phone", "Téléphone"), text: "+92 42 111 228 325" },
               { icon: Mail, title: t("Email", "E-mail"), text: "support@masalahub.com" },
-              { icon: MapPin, title: t("Kitchen", "Cuisine"), text: "Gulberg III, Lahore" },
+              { icon: MapPin, title: t("Kitchen", "Cuisine"), text: "5/3 Contour de l'Église St Martin, 59100 Roubaix" },
             ].map((item) => (
               <div key={item.title} className="flex items-center gap-4">
                 <div className="bg-sage-soft text-sage p-3 rounded-2xl"><item.icon className="w-5 h-5" /></div>

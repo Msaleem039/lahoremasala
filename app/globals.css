@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fff7f8;
+  --background: #ffffff;
   --foreground: #1a1a1a;
-  --cream: #fff7f8;
+  --cream: #ffffff;
   --ink: #1a1a1a;
   --muted: #6d6668;
-  --sage: #c2183a;
-  --terra: #ef2b3c;
+  --sage: #e06a12;
+  --terra: #ef7d24;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-cream: #fff7f8;
-  --color-cream-deep: #ffe4ea;
+  --color-cream: #ffffff;
+  --color-cream-deep: #fff3e8;
   --color-ink: #1a1a1a;
   --color-muted: #6d6668;
-  --color-sage: #c2183a;
-  --color-sage-soft: #ffe4ea;
-  --color-terra: #ef2b3c;
-  --color-terra-deep: #d01228;
+  --color-sage: #e06a12;
+  --color-sage-soft: #fff3e8;
+  --color-terra: #ef7d24;
+  --color-terra-deep: #d86612;
   --color-card: #ffffff;
   --color-forest: #3a1220;
-  --color-shell: #ff6f8d;
+  --color-shell: #ef7d24;
   --font-sans: var(--font-nunito-gf), "Nunito", sans-serif;
   --font-serif: var(--font-cormorant-gf), "Cormorant Garamond", serif;
   --font-script: var(--font-great-vibes-gf), "Great Vibes", cursive;
@@ -34,21 +34,21 @@ html {
 }
 
 body {
-  background: #ff6f8d;
+  background: #ffffff;
   color: var(--ink);
   font-family: var(--font-nunito-gf), "Nunito", sans-serif;
   overflow-x: clip;
 }
 
 ::selection {
-  background: #ffd0da;
+  background: #ffd4a8;
   color: #1a1a1a;
 }
 
 .field {
   width: 100%;
   border-radius: 0.95rem;
-  border: 1px solid #f0d5dc;
+  border: 1px solid #f4d4bc;
   background: #ffffff;
   padding: 0.8rem 0.95rem;
   color: #1a1a1a;
@@ -56,15 +56,15 @@ body {
 }
 
 .field:focus {
-  border-color: #ef2b3c;
-  box-shadow: 0 0 0 3px rgba(239, 43, 60, 0.18);
+  border-color: #ef7d24;
+  box-shadow: 0 0 0 3px rgba(239, 125, 36, 0.28);
 }
 
 .script-title {
   font-family: var(--font-great-vibes-gf), "Great Vibes", cursive;
   font-weight: 400;
   line-height: 1.05;
-  color: #ef2b3c;
+  color: #e06a12;
   max-width: 100%;
   overflow-wrap: anywhere;
 }
@@ -80,7 +80,7 @@ body {
 button.bg-terra,
 a.bg-terra,
 span.bg-terra {
-  color: #fff;
+  color: #1a1a1a;
 }
 
 .money-row {

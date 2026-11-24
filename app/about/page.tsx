@@ -20,8 +20,8 @@ export default function AboutPage() {
             <h1 className="script-title mt-2 text-4xl sm:text-6xl lg:text-7xl">{t("Cooked slowly, served hot.", "Mijoté doucement, servi chaud.")}</h1>
             <p className="text-muted mt-4 leading-relaxed">
               {t(
-                "Taste of Lahore Masala cooks the dishes on our card: butter chicken and the other specialties with basmati rice, chicken and vegetable biryani, stuffed naan, house-sauce pizzas, samosas, and lassi.",
-                "Taste of Lahore Masala prépare les plats de la carte : poulet au beurre et les autres spécialités avec riz basmati, biryani poulet et végétarien, naan garni, pizzas à la sauce maison, samosas et lassi.",
+                "Taste of Lahore Masala cooks the dishes on our card: special menus, chicken curries, biryani, vegetarian dishes, samosas and pakoras.",
+                "Taste of Lahore Masala prépare les plats de la carte : formules spéciales, currys de poulet, biryani, plats végétariens, samosas et pakoras.",
               )}
             </p>
             <div className="mt-8 grid grid-cols-3 gap-2 border-t border-[#e5dcc8] pt-6 text-center sm:gap-4 sm:text-left">

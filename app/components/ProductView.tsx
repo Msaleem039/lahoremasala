@@ -4,9 +4,11 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { Minus, Plus, Star } from "lucide-react";
 import { SiteShell } from "./SiteShell";
+import { ORDER_SERVICE_KEY } from "./OrderTypeDialog";
+import { DishCard } from "./DishCard";
 import { DishImage } from "./DishImage";
 import { ProductReviews } from "./ProductReviews";
-import { categoryLabel, dishDescription, dishName, dishPath, type Dish } from "../data/menuData";
+import { categoryLabel, dishDescription, dishName, type Dish } from "../data/menuData";
 import { formatPrice } from "../lib/pricing";
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -55,6 +57,12 @@ export function ProductView({ product, related }: { product: Dish; related: Dish
     window.setTimeout(() => setAdded(false), 1200);
   };
 
+  const takeaway = () => {
+    if (!orderable) return;
+    sessionStorage.setItem(ORDER_SERVICE_KEY, "pickup");
+    add();
+  };
+
   return (
     <SiteShell>
       <main className="mx-auto w-full max-w-6xl px-4 py-8 pb-28 sm:px-6 sm:pb-12 lg:px-8">
@@ -69,7 +77,7 @@ export function ProductView({ product, related }: { product: Dish; related: Dish
         </nav>
 
         <div className="grid items-start gap-8 lg:grid-cols-2">
-          <div className="relative h-64 overflow-hidden rounded-[2rem] border border-[#e5dcc8] bg-cream-deep sm:h-80 lg:h-[28rem]">
+          <div className="relative h-64 overflow-hidden rounded-xl border border-[#e6e6e6] bg-[#f3f3f3] sm:h-80 lg:h-[28rem]">
             <DishImage src={product.image} alt={dishName(product.name, lang)} priority sizes="(max-width: 1024px) 100vw, 50vw" />
           </div>
           <div>
@@ -163,6 +171,9 @@ export function ProductView({ product, related }: { product: Dish; related: Dish
               <button type="button" disabled={!orderable} onClick={add} className="rounded-full bg-terra px-6 py-3 font-bold text-ink disabled:opacity-50">
                 {added ? t("Added", "Ajouté") : `${t("Add", "Ajouter")} · ${formatPrice(unit * quantity)}`}
               </button>
+              <button type="button" disabled={!orderable} onClick={takeaway} className="rounded-full border border-[#e7e7e7] bg-white px-6 py-3 font-bold text-ink hover:border-terra disabled:opacity-50">
+                {t("Takeaway", "À emporter")}
+              </button>
             </div>
           </div>
         </div>
@@ -170,13 +181,11 @@ export function ProductView({ product, related }: { product: Dish; related: Dish
         {related.length > 0 && (
           <section className="mt-12">
             <h2 className="font-serif text-4xl mb-4">{t("You may also like", "Dans la même veine")}</h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="flex flex-wrap justify-center gap-4">
               {related.map((item) => (
-                <Link key={item.id} href={dishPath(item)} className="rounded-3xl border border-[#e5dcc8] bg-card p-3">
-                  <div className="relative h-32 overflow-hidden rounded-2xl"><DishImage src={item.image} alt={dishName(item.name, lang)} /></div>
-                  <p className="mt-3 font-serif text-2xl">{dishName(item.name, lang)}</p>
-                  <p className="font-bold text-terra">{formatPrice(item.price)}</p>
-                </Link>
+                <div key={item.id} className="w-[260px] sm:w-[280px]">
+                  <DishCard dish={item} />
+                </div>
               ))}
             </div>
           </section>
@@ -190,8 +199,11 @@ export function ProductView({ product, related }: { product: Dish; related: Dish
             <span className="w-5 text-center font-bold">{quantity}</span>
             <button type="button" aria-label={t("Increase quantity", "Augmenter la quantité")} onClick={() => setQuantity((current) => Math.min(30, current + 1))} className="p-3"><Plus className="h-4 w-4" /></button>
           </div>
-          <button type="button" disabled={!orderable} onClick={add} className="flex-1 rounded-full bg-terra py-3 font-bold text-ink disabled:opacity-50">
+          <button type="button" disabled={!orderable} onClick={add} className="flex-1 rounded-full bg-terra py-3 text-sm font-bold text-ink disabled:opacity-50">
             {orderable ? `${t("Add", "Ajouter")} · ${formatPrice(unit * quantity)}` : t("Unavailable", "Indisponible")}
+          </button>
+          <button type="button" disabled={!orderable} onClick={takeaway} className="rounded-full border border-[#e7e7e7] bg-white px-4 py-3 text-sm font-bold text-ink disabled:opacity-50">
+            {t("Takeaway", "À emporter")}
           </button>
         </div>
       </div>
